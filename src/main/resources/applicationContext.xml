@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
+    <!--<bean id="musicBeanRock"
+          class="org.example.RockMusic">
+    </bean>
+
+    <bean id="musicBeanRap"
+           class="org.example.RapMusic">
+     </bean>
+
+    <bean id="musicBeanClassical"
+          class="org.example.ClassicalMusic">
+    </bean>-->
+
+    <!--<bean id="musicPlayer"-->
+          <!--class="org.example.MusicPlayer"-->
+          <!--scope="prototype"> --> <!-- При помощи метода "scope" значения "prototype" контролируем создание новых значений у разных объеектов-->
+        <!--<constructor-arg ref="musicBean"/>--> <!-- "constructor" - Данный тег используется с контсруктором и ссылается на ранее созданный Bean-->
+        <!--<property name="music" ref="musicBean"/>--> <!-- "property" - Данный тег используется с СЭТером и внедряет ссылочный тип данных-->
+
+        <!--<property name="name" value="Some name"/>--> <!-- Чтобы внедрить не ссылочный тип данных а сима значение необходимо использовать тег "value"-->
+        <!--<property name="volume" value="50"/>-->
+
+        <!-- Внедрение зависимойстей коллекций -->
+        <!--<property name="musicList">-->
+            <!--<list>-->
+                <!--<ref bean="musicBeanRock"/>-->
+                <!--<ref bean="musicBeanRap"/>-->
+                <!--<ref bean="musicBeanClassical"/>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!-- Внедрение зависимостей из файла-->
+        <!--<property name="name" value="${musicPlayer.name}"/>--> <!-- Чтобы внедрить зависимость из файла, необходимо указывать ${...значение...}-->
+    <!--<property name="volume" value="${musicPlayer.volume}"/>
+</bean>-->
+
+    <bean id="musicBean"
+          class="org.example.ClassicalMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy"
+          factory-method="getClassicalMusic">
+    </bean>
+
+
+</beans>
+
