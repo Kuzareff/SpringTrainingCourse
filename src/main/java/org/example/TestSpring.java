@@ -1,5 +1,6 @@
 package org.example;
 
+import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestSpring {
@@ -24,10 +25,29 @@ public class TestSpring {
 //        System.out.println(musicPlayer.getName());
 //        System.out.println(musicPlayer.getVolume());
 
-        ClassicalMusic classicalMusic = context.getBean("musicBean", ClassicalMusic.class);
+//        ClassicalMusic classicalMusic = context.getBean("musicBean", ClassicalMusic.class);
 
-        System.out.println(classicalMusic.getSong());
+//        System.out.println(classicalMusic.getSong());
+
+//        Music music1 = context.getBean("rockMusic", Music.class);
+//        MusicPlayer musicPlayer = new MusicPlayer(music1);
+//        musicPlayer.playMusic();
+//
+//        Music music2 = context.getBean("classicalMusic", Music.class);
+//        MusicPlayer musicPlayer1 = new MusicPlayer(music2);
+//        musicPlayer1.playMusic();
+
+//        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+//        musicPlayer.playMusic();
+
+//        Computer computer = context.getBean("computer", Computer.class);
+//        System.out.println(computer);
+        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+
+        musicPlayer.playMusic(MusicGenre.CLASSICAL);
+        musicPlayer.playMusic(MusicGenre.ROCK);
 
         context.close();
+
     }
 }
